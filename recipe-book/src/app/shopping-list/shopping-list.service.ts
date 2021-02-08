@@ -9,6 +9,7 @@ export class ShoppingListService{
   ];
 
   ingredientsChanged = new Subject<Ingredient[]>();
+  startedEditing = new Subject<number>();
 
   // tslint:disable-next-line:typedef
   getIngredient(){
