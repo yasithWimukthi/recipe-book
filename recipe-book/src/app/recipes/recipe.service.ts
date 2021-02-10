@@ -1,11 +1,14 @@
 import { Injectable} from '@angular/core';
 import {Recipe} from './recipe.model';
+// @ts-ignore
+import {Subject} from "rxjs";
+
 import {Ingredient} from '../shared/ingredient.model';
 import {ShoppingListService} from '../shopping-list/shopping-list.service';
 
 @Injectable()
 export class RecipeService{
-
+  recipeChanged = new Subject<Recipe[]>();
   // tslint:disable-next-line:variable-name
   private _recipes: Recipe[] = [
     new Recipe(
@@ -40,5 +43,15 @@ export class RecipeService{
   // tslint:disable-next-line:typedef
   addIngredientsToShoppingList(ingredients: Ingredient[]){
     this.slService.addIngredients(ingredients);
+  }
+
+  addRecipe(recipe: Recipe){
+    this._recipes.push(recipe);
+    this.recipeChanged.next(this._recipes.slice());
+  }
+
+  updateRecipe(index: number,recipe: Recipe){
+    this._recipes[index] = recipe;
+    this.recipeChanged.next(this._recipes.slice());
   }
 }
