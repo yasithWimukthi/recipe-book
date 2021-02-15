@@ -17,4 +17,8 @@ export class DataStorageService{
       console.log(responce)
     })
   }
+
+  fetchRecipes(){
+
+  }
 }
