@@ -29,7 +29,7 @@ export class RecipeService{
   //     ])
   // ];
 
-  private recipes: Recipe[] = [];
+  private _recipes: Recipe[] = [];
   constructor(private slService: ShoppingListService){}
 
   getRecipes(): Recipe[] {
