@@ -17,6 +17,7 @@ import {AppRoutingModule} from './app-routing.module';
 import { StartRecipeComponent } from './recipes/start-recipe/start-recipe.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import {RecipeService} from "./recipes/recipe.service";
+import { AuthComponent } from './auth/auth.component';
 
 
 // @ts-ignore
@@ -32,7 +33,8 @@ import {RecipeService} from "./recipes/recipe.service";
     ShoppingEditComponent,
     DropdownDirective,
     StartRecipeComponent,
-    RecipeEditComponent
+    RecipeEditComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
