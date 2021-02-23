@@ -53,7 +53,17 @@ export class AuthService{
         password,
         returnSecureToken  :true
       }
-    ).pipe(catchError(this.errorHandle));
+    ).pipe(
+      catchError(this.errorHandle),
+      tap(resData =>{
+        this.handleAuthentication(
+          resData.email,
+          resData.localId,
+          resData.idToken,
+          +resData.expiresIn
+        );
+      })
+      );
   }
 
   private handleAuthentication(email: string, userId: string,token: string,expiresIn: number){

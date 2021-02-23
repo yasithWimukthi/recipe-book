@@ -12,17 +12,17 @@ import {AuthService} from "../auth/auth.service";
 
 export class HeaderComponent implements OnInit,OnDestroy{
 
-  isAuthenticated = false;
+  isAuthenticated: boolean;
   private userSub: Subscription;
 
   constructor(private dataStorageService: DataStorageService, private authService: AuthService) {
   }
 
   ngOnInit(): void {
+    console.log('inside ngOnInit');
     this.userSub = this.authService.user.subscribe(user =>{
       this.isAuthenticated = user ? true : false;
-      console.log(user)
-      console.log(this.isAuthenticated);
+      console.log('Header component : \n' + user)
     });
   }
 
